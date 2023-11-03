@@ -3,8 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Item;
 use App\Models\Role;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\InboundTransaction;
+use App\Models\OutboundTransaction;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -75,23 +78,23 @@ class User extends Authenticatable
 
     public function entry_inbound()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->hasMany(InboundTransaction::class, 'user_id');
     }
 
     public function entry_outbound()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->hasMany(OutboundTransaction::class, 'user_id');
     }
 
-    public function user_supplier()
-    {
-        return $this->hasMany(User::class, 'supplier_id');
-    }
+    // public function user_supplier()
+    // {
+    //     return $this->hasMany(User::class, 'supplier_id');
+    // }
 
-    public function user_customer()
-    {
-        return $this->hasMany(User::class, 'customer_id');
-    }
+    // public function user_customer()
+    // {
+    //     return $this->hasMany(User::class, 'customer_id');
+    // }
 
 
     

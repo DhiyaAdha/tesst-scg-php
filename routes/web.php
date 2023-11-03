@@ -31,6 +31,8 @@ Route::post('/store-item', [ItemController::class, 'store'])->name('store.item')
 Route::get('/data-transaction',[TransactionController::class, 'index'])->name('dashboard.transaction');
 Route::get('/bill-suplier',[TransactionController::class, 'create_inbound'])->name('create.suplier');
 Route::post('/transaction-suplier',[TransactionController::class, 'store_bill_suplier'])->name('transaction.suplier');
+Route::get('/bill-customer',[TransactionController::class, 'create_outbound'])->name('create.customer');
+Route::post('/transaction-customer',[TransactionController::class, 'store_bill_customer'])->name('transaction.customer');
 
 
 Route::get('/data-user', [UserController::class, 'index'])->name('data.user');

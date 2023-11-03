@@ -68,7 +68,7 @@
                         <h6 class="collapse-header">Data Transaksi</h6>
                         <a class="collapse-item" href="{{ route('dashboard.transaction') }}">Table Transaction</a>
                         <a class="collapse-item" href="{{ route('create.suplier') }}">Transaksi Suplier</a>
-                        <a class="collapse-item" href="buttons.html">Transaksi Customer</a>
+                        <a class="collapse-item" href="{{ route('create.customer') }}">Transaksi Customer</a>
                     </div>
                 </div>
             </li>

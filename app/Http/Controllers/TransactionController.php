@@ -33,6 +33,7 @@ class TransactionController extends Controller
             'qty_received' => 'required|integer',
             'item_id' => 'required|exists:items,id',
             'supplier_id' => 'nullable|exists:users,id',
+            'customer_id' => 'nullable|exists:users,id',
         ]);
 
         $inboundTransaction = new InboundTransaction();
@@ -49,6 +50,40 @@ class TransactionController extends Controller
 
         return redirect()->route('dashboard.transaction')->withSuccess('Inbound transaction created successfully!');
     }
+
+    public function create_outbound()
+    {
+        $out_customer = OutboundTransaction::all();
+        // dd($out_customer);
+
+        return view('pages.dashboard.transaction.bill_customer.create', compact('out_customer'));
+    }
+
+    public function store_bill_customer(Request $request)
+    {
+        $validatedData = $request->validate([
+            'qty_sold' => 'required|integer',
+            'item_id' => 'required|exists:items,id',
+            'customer_id' => 'nullable|exists:users,id',
+        ]);
+
+        $outboundTransaction = new OutboundTransaction();
+        $outboundTransaction->outbound_date = now(); // Tambahkan logic tanggal di sini sesuai kebutuhan Anda.
+        $outboundTransaction->qty_sold = $request->qty_sold;
+        $outboundTransaction->item_id = $request->item_id;
+        $outboundTransaction->user_id = 1; // Ambil ID user yang melakukan aksi
+
+        if ($request->filled('customer_id')) {
+            $outboundTransaction->customer_id = $request->customer_id;
+        }
+
+        $outboundTransaction->save();
+
+        return redirect()->route('dashboard.transaction')->withSuccess('Outbound transaction created successfully!');
+    }
+
+
+
 
 
 }

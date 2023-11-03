@@ -1,81 +1,68 @@
 @extends('layouts.dashboard.index')
 
-@section('title', 'Input Supplier')
+@section('title', 'Transaction Customer')
 
 @section('content')
     <div class="col-6">
-        <form method="POST" action="{{ route('store.item') }}">
+
+        <form method="POST" action="{{ route('transaction.customer') }}">
             @csrf
-            <div class="mb-3">
-                <label for="inputName" class="form-label">Produk Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="inputName" name="name"
-                    value="{{ old('name') }}">
-                <!-- Menambahkan atribut '' untuk validasi -->
-                @error('name')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
 
-            <div class="mb-3">
-                <label for="inputDesc" class="form-label">Description</label>
-                <textarea class="form-control @error('desc') is-invalid @enderror" id="inputDesc" name="desc">{{ old('desc') }}</textarea>
-                <!-- Menambahkan atribut '' untuk validasi -->
-                @error('desc')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="inputPassword" class="form-label">Unit Price</label>
-                <input type="text" class="form-control @error('unit_price') is-invalid @enderror" id="inputunit_price"
-                    name="unit_price">
-                <!-- Menambahkan atribut '' untuk validasi -->
-                @error('unit_price')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="inputContact" class="form-label">Quantity Item</label>
-                <input type="text" class="form-control @error('qty_items') is-invalid @enderror" id="inputqty_items"
-                    name="qty_items" value="{{ old('qty_items') }}">
-                <!-- Menambahkan atribut '' untuk validasi -->
-                @error('qty_items')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="inputStatus" class="form-label">Status</label>
-                <select class="form-select @error('status') is-invalid @enderror" id="inputStatus" name="status"
+            <div class="form-group">
+                <label for="inputSupplier" class="form-label">Nama Customer</label>
+                <select class="form-control @error('customer_id') is-invalid @enderror" id="inputSupplier" name="customer_id"
                     aria-label="Default select example">
-                    <option selected disabled>Choose Item Status</option>
-                    <option value="ada" {{ old('status') === 'ada' ? 'selected' : '' }}>Available</option>
-                    <option value="habis" {{ old('status') === 'habis' ? 'selected' : '' }}>Out of Stock</option>
+                    <option selected disabled>Pilih Nama Customer</option>
+                    @foreach ($out_customer as $k)
+                        <option value="{{ $k->customer->id }}"
+                            {{ old('customer_id') == $k->customer->id ? 'selected' : '' }}>
+                            {{ $k->customer->name }}
+                        </option>
+                    @endforeach
                 </select>
-                <!-- Menambahkan atribut 'required' untuk validasi -->
-                @error('status')
+
+                @error('customer_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="inputItem" class="form-label">Nama Item</label>
+                <select class="form-control @error('item_id') is-invalid @enderror" id="inputItem" name="item_id"
+                    aria-label="Default select example">
+                    <option selected disabled>Pilih Nama Item</option>
+                    @foreach ($out_customer as $p)
+                        <option value="{{ $p->item->id }}" {{ old('item_id') == $p->item->id ? 'selected' : '' }}>
+                            {{ $p->item->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('item_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="inputQtySold" class="form-label">Quantity Sold</label>
+                <input type="number" class="form-control @error('qty_sold') is-invalid @enderror" id="inputQtySold"
+                    name="qty_sold" value="{{ old('qty_sold') }}">
+                @error('qty_sold')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
 
-    </div>
 
+    </div>
 
     <script>
         // Menggunakan JavaScript untuk validasi angka pada input
