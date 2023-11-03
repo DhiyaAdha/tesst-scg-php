@@ -69,3 +69,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Instalation Debug Bar
 
 The Laravel fDebugbar [Debgbar for Laravel](https://github.com/barryvdh/laravel-debugbar).
+
+Activation : [php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"]
