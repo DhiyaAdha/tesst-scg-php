@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -26,6 +27,9 @@ Route::get('/dashboard-item', function(){
 Route::get('/data-item', [ItemController::class, 'index'])->name('data.item');
 Route::get('/create-item', [ItemController::class, 'create'])->name('create.item');
 Route::post('/store-item', [ItemController::class, 'store'])->name('store.item');
+
+Route::get('/data-transaction',[TransactionController::class, 'index'])->name('dashboard.user');
+
 
 Route::get('/data-user', [UserController::class, 'index'])->name('data.user');
 Route::get('/create-suplier', [UserController::class, 'create_suplier'])->name('input.suplier');

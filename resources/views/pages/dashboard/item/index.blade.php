@@ -25,6 +25,7 @@
                             <th>Qty Item</th>
                             <th>User Input</th>
                             <th>Status</th>
+                            <th>Tanggal</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -35,6 +36,7 @@
                             <th>Qty Item</th>
                             <th>User Input</th>
                             <th>Status</th>
+                            <th>Tanggal</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -52,6 +54,7 @@
                                         <span class="badge bg-danger text-white">{{ $item->status }}</span>
                                     @endif
                                 </td>
+                                <td>{{ $item->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>
