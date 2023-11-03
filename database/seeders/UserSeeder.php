@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role_id' => 1,
+                'contact' => '081234534890',
             ],
             [
                 'name' => 'hamam',
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role_id' => 2,
+                'contact' => '081234567800',
             ],
             [
                 'name' => 'eta',
@@ -40,6 +42,7 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role_id' => 3,
+                'contact' => '081234567890',
             ],
             // Tambahkan data user lainnya dengan kolom yang memiliki nilai nullable
         ];

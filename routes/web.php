@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,9 @@ Route::get('/', function () {
 Route::get('/dashboard-item', function(){
     return view('layouts.dashboard.index');
 });
-Route::get('/data-user', function(){
-    return view('pages.dashboard.user.index');
-});
+
+Route::get('/data-user', [UserController::class, 'index'])->name('data.user');
+Route::get('/create-suplier', [UserController::class, 'create_suplier'])->name('input.suplier');
 
 Route::middleware([
     'auth:sanctum',

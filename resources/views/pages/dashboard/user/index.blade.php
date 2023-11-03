@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.index')
 
-@section('title', ' My Data User')
+@section('title', ' My Report User')
 <!-- Begin Page Content -->
 @section('content')
     <!-- Page Heading -->
@@ -34,28 +34,14 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Hamdan</td>
-                            <td>Admin</td>
-                            <td>0877***</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Hamdan</td>
-                            <td>Suplier</td>
-                            <td>0877***</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Hamdan</td>
-                            <td>Customer</td>
-                            <td>0877***</td>
-                            
-                        </tr>
-                        
+                        @foreach ($users as $key => $user)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->status_user->name }}</td>
+                                <td>{{ $user->contact }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
