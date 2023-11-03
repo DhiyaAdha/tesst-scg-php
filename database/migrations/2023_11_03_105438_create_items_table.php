@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('desc')->unique();
             $table->integer('unit_price');
             $table->integer('qty_items');
+            $table->enum('status', ['ada', 'habis']);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

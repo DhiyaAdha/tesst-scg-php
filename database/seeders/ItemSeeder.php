@@ -20,6 +20,7 @@ class ItemSeeder extends Seeder
             'unit_price' => 50,
             'qty_items' => 100,
             'user_id' => 1,
+            'status' => 'ada'
         ]);
 
         Item::create([
@@ -28,14 +29,16 @@ class ItemSeeder extends Seeder
             'unit_price' => 75,
             'qty_items' => 80,
             'user_id' => 1,
+            'status' => 'ada'
         ]);
 
         Item::create([
             'name' => 'Product C',
             'desc' => 'Description of Product C',
             'unit_price' => 30,
-            'qty_items' => 120,
+            'qty_items' => 0,
             'user_id' => 1,
+            'status' => 'habis'
         ]);
     }
 }

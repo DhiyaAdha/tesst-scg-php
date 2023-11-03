@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function create_suplier()
     {
-        return view('pages.dashboard.user.suplier.index');
+        return view('pages.dashboard.user.create');
     }
 
     public function store(Request $request)

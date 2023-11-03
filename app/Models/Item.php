@@ -16,7 +16,8 @@ class Item extends Model
         'desc',
         'unit_price',
         'qty_items',
-        'user_id'
+        'user_id',
+        'status'
     ];
 
     public function user()
