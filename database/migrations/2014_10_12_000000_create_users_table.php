@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('role_id');
-            $table->string('contact')->nullable();
+            $table->string('contact', 15)->nullable();
             $table->rememberToken();
             
             $table->foreignId('current_team_id')->nullable();

@@ -91,7 +91,6 @@
                         <h6 class="collapse-header">Data User</h6>
                         <a class="collapse-item" href="/data-user">Table User</a>
                         <a class="collapse-item" href="{{ route('input.suplier') }}">Input User</a>
-                        <a class="collapse-item" href="buttons.html">Input Suplier</a>
                     </div>
                 </div>
             </li>

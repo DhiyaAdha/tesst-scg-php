@@ -24,6 +24,7 @@ Route::get('/dashboard-item', function(){
 
 Route::get('/data-user', [UserController::class, 'index'])->name('data.user');
 Route::get('/create-suplier', [UserController::class, 'create_suplier'])->name('input.suplier');
+Route::post('/store-suplier', [UserController::class, 'store'])->name('store.suplier');
 
 Route::middleware([
     'auth:sanctum',
