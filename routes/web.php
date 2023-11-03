@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/dashboard-item', function(){
     return view('layouts.dashboard.index');
 });
+Route::get('/data-user', function(){
+    return view('pages.dashboard.user.index');
+});
 
 Route::middleware([
     'auth:sanctum',

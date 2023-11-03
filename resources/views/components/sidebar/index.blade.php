@@ -89,6 +89,7 @@
                 <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data User</h6>
+                        <a class="collapse-item" href="/data-user">Table User</a>
                         <a class="collapse-item" href="buttons.html">Input User</a>
                         <a class="collapse-item" href="buttons.html">Input Suplier</a>
                     </div>
