@@ -51,7 +51,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Items</h6>
                         <a class="collapse-item" href="{{ route('data.item') }}">Table Item</a>
-                        <a class="collapse-item" href="buttons.html">Input Item</a>
+                        <a class="collapse-item" href="{{ route('create.item') }}">Input Item</a>
                     </div>
                 </div>
             </li>
