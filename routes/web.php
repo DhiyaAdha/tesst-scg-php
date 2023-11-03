@@ -28,7 +28,9 @@ Route::get('/data-item', [ItemController::class, 'index'])->name('data.item');
 Route::get('/create-item', [ItemController::class, 'create'])->name('create.item');
 Route::post('/store-item', [ItemController::class, 'store'])->name('store.item');
 
-Route::get('/data-transaction',[TransactionController::class, 'index'])->name('dashboard.user');
+Route::get('/data-transaction',[TransactionController::class, 'index'])->name('dashboard.transaction');
+Route::get('/bill-suplier',[TransactionController::class, 'create_inbound'])->name('create.suplier');
+Route::post('/transaction-suplier',[TransactionController::class, 'store_bill_suplier'])->name('transaction.suplier');
 
 
 Route::get('/data-user', [UserController::class, 'index'])->name('data.user');

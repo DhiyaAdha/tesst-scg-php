@@ -66,9 +66,9 @@
                 <div id="collapseTransaction" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Transaksi</h6>
-                        <a class="collapse-item" href="{{ route('dashboard.user') }}">Table Transaction</a>
-                        <a class="collapse-item" href="buttons.html">Bill Suplieer</a>
-                        <a class="collapse-item" href="buttons.html">Bill Customer</a>
+                        <a class="collapse-item" href="{{ route('dashboard.transaction') }}">Table Transaction</a>
+                        <a class="collapse-item" href="{{ route('create.suplier') }}">Transaksi Suplier</a>
+                        <a class="collapse-item" href="buttons.html">Transaksi Customer</a>
                     </div>
                 </div>
             </li>
