@@ -41,6 +41,17 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->status_user->name }}</td>
                                 <td>{{ $user->contact }}</td>
+                                <td>
+                                    <a href="{{ route('user.edit', ['id' => $user->id]) }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('user.destroy', ['id' => $user->id]) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"
+                                            onclick="return confirm('Are you sure to delete this data?')">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

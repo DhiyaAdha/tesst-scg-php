@@ -55,7 +55,7 @@
                                         <span class="badge bg-danger text-white">{{ $item->status }}</span>
                                     @endif
                                 </td>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->updated_at }}</td>
                                 <td>
                                     <a href="{{ route('item.detail', ['id' => $item->id]) }}"
                                         class="btn btn-warning">Edit</a>

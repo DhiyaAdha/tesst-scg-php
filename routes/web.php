@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard-item', function(){
+Route::get('/dashboard-item', function () {
     return view('layouts.dashboard.index');
 });
 
@@ -36,14 +36,19 @@ Route::get('/dashboard-item', function(){
 // });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
 
+    // User
     Route::get('/data-user', [UserController::class, 'index'])->name('data.user');
     Route::get('/create-suplier', [UserController::class, 'create_suplier'])->name('input.suplier');
     Route::post('/store-suplier', [UserController::class, 'store'])->name('store.suplier');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
+    Route::delete(
+        '/user/{id}',
+        [UserController::class, 'destroy']
+    )->name('user.destroy');
 
+    // Item
     Route::get('/data-item', [ItemController::class, 'index'])->name('data.item');
     Route::get('/create-item', [ItemController::class, 'create'])->name('create.item');
     Route::post('/store-item', [ItemController::class, 'store'])->name('store.item');
@@ -51,6 +56,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/item/{id}/update', [ItemController::class, 'update'])->name('item.update');
     Route::delete('/item/{id}', [ItemController::class, 'destroy'])->name('item.destroy');
 
+    // Transaction
     Route::get('/data-transaction', [TransactionController::class, 'index'])->name('dashboard.transaction');
     Route::get('/bill-suplier', [TransactionController::class, 'create_inbound'])->name('create.suplier');
     Route::post('/transaction-suplier', [TransactionController::class, 'store_bill_suplier'])->name('transaction.suplier');
