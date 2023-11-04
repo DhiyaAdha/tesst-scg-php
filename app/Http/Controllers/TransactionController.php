@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\InboundTransaction;
 use App\Models\OutboundTransaction;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransactionController extends Controller
 {
@@ -48,7 +49,10 @@ class TransactionController extends Controller
 
         $inboundTransaction->save();
 
-        return redirect()->route('dashboard.transaction')->withSuccess('Inbound transaction created successfully!');
+        // Tampilkan Sweet Alert setelah transaksi berhasil dibuat
+        Alert::success('Success', 'Inbound transaction created successfully!');
+
+        return redirect()->route('dashboard.transaction');
     }
 
     public function create_outbound()
@@ -79,7 +83,10 @@ class TransactionController extends Controller
 
         $outboundTransaction->save();
 
-        return redirect()->route('dashboard.transaction')->withSuccess('Outbound transaction created successfully!');
+        // Tampilkan Sweet Alert setelah transaksi berhasil dibuat
+        Alert::success('Success', 'Outbound transaction created successfully!');
+
+        return redirect()->route('dashboard.transaction');
     }
 
 

@@ -57,8 +57,9 @@
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('item.detail', ['id' => $item->id]) }}" class="btn btn-warning">Edit</a>
-                                    <form action="#" method="POST"
+                                    <a href="{{ route('item.detail', ['id' => $item->id]) }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')

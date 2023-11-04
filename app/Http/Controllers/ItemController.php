@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemController extends Controller
 {
@@ -58,8 +59,8 @@ class ItemController extends Controller
     public function detail($id)
     {
         $item = Item::find($id);
-        dd($item);
-        
+        // dd($item);
+
         // Pastikan item ditemukan sebelum menampilkan detailnya
         if ($item) {
             return view('pages.dashboard.item.detail', compact('item'));
@@ -67,6 +68,7 @@ class ItemController extends Controller
             return redirect()->route('data.item')->with('error', 'Item not found');
         }
     }
+
 
     public function update(Request $request, $id)
     {
@@ -81,7 +83,15 @@ class ItemController extends Controller
                 'qty_items' => 'required|numeric',
                 'status' => 'required|in:ada,habis'
             ], [
-                // Pesan error
+                'name.required' => 'Nama barang tidak boleh kosong',
+                'desc.required' => 'Deskripsi barang tidak boleh kosong',
+                'desc.unique' => 'Deskripsi barang harus unik',
+                'unit_price.required' => 'Harga barang tidak boleh kosong',
+                'unit_price.numeric' => 'Harga barang harus berupa angka',
+                'qty_items.required' => 'Jumlah barang tidak boleh kosong',
+                'qty_items.numeric' => 'Jumlah barang harus berupa angka',
+                'status.required' => 'Status barang tidak boleh kosong',
+                'status.in' => 'Status barang harus ada atau habis'
             ]);
 
             $item->name = $request->name;
@@ -92,9 +102,33 @@ class ItemController extends Controller
             $item->user_id = 1; // Misalnya user dengan ID 1 sedang mengelola item ini
             $item->save();
 
-            return redirect()->route('item.detail', ['id' => $id])->withSuccess('Data berhasil diupdate!');
+            Alert::success('Success', 'Data berhasil diupdate!')->showConfirmButton('OK', '#3085d6');
+            return redirect()->route('data.item', ['id' => $id]);
         } else {
-            return redirect()->route('data.item')->with('error', 'Item not found');
+            Alert::error('Error', 'Item not found')->showConfirmButton('OK', '#3085d6');
+            return back();
         }
     }
+
+    public function destroy($id)
+    {
+        $item = Item::find($id);
+
+        if ($item) {
+            if ($item->canBeDeleted()) {
+                // If there are no relations, proceed with the deletion
+                $item->delete();
+                Alert::success('Success', 'Data berhasil dihapus!')->showConfirmButton('OK', '#3085d6');
+                return redirect()->route('data.item');
+            } else {
+                // If the item has relations, display an alert message
+                Alert::error('Error', 'Item memiliki relasi dengan fitur Transaksi')->showConfirmButton('OK', '#3085d6');
+                return back();
+            }
+        } else {
+            Alert::error('Error', 'Item not found')->showConfirmButton('OK', '#3085d6');
+            return back();
+        }
+    }
+
 }

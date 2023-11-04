@@ -42,11 +42,11 @@
 
                 <!-- Topbar -->
                 
+                @include('sweetalert::alert')
                 @include('components.navbar.index')
                 <!-- End of Topbar -->
 
                 <div class="container-fluid">
-                    @include('sweetalert::alert')
                     @yield('content')
                 </div>
 

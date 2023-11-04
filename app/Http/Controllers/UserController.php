@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -51,9 +52,9 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         // dd($user);
         $user->save();
-    
-        // Redirect atau kembali ke halaman yang diinginkan setelah menyimpan data
-        return redirect()->route('data.user')->withSuccess('Data berhasil ditambahkan!');
+        // Tampilkan Sweet Alert setelah data berhasil ditambahkan
+        Alert::success('Success', 'Data berhasil ditambahkan!');
 
+        return redirect()->route('data.user');
     }
 }

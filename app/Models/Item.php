@@ -24,4 +24,19 @@ class Item extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function inbound_transactions()
+    {
+        return $this->hasMany(InboundTransaction::class, 'item_id');
+    }
+
+    public function outbound_transactions()
+    {
+        return $this->hasMany(OutboundTransaction::class, 'item_id');
+    }
+
+    public function canBeDeleted(): bool
+    {
+        return $this->inbound_transactions()->count() === 0 && $this->outbound_transactions()->count() === 0;
+    }
 }

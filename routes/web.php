@@ -49,6 +49,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/store-item', [ItemController::class, 'store'])->name('store.item');
     Route::get('/item/{id}', [ItemController::class, 'detail'])->name('item.detail');
     Route::post('/item/{id}/update', [ItemController::class, 'update'])->name('item.update');
+    Route::delete('/item/{id}', [ItemController::class, 'destroy'])->name('item.destroy');
 
     Route::get('/data-transaction', [TransactionController::class, 'index'])->name('dashboard.transaction');
     Route::get('/bill-suplier', [TransactionController::class, 'create_inbound'])->name('create.suplier');
