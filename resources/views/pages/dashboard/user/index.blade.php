@@ -44,13 +44,13 @@
                                 <td>
                                     <a href="{{ route('user.edit', ['id' => $user->id]) }}"
                                         class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('user.destroy', ['id' => $user->id]) }}" method="POST"
+                                    {{-- <form action="{{ route('user.destroy', ['id' => $user->id]) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger"
                                             onclick="return confirm('Are you sure to delete this data?')">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
