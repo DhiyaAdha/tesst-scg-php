@@ -22,6 +22,7 @@
                             <th>Name</th>
                             <th>Role</th>
                             <th>Contact</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -30,6 +31,7 @@
                             <th>Name</th>
                             <th>Role</th>
                             <th>Contact</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>

@@ -4,7 +4,7 @@
 <!-- Begin Page Content -->
 @section('content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables Transactions</h1>
+    <h1 class="h3 mb-2 text-gray-800">Report Transactions</h1>
     <p class="mb-4">DataTables menampilkan data-data transaksi yang ada <a target="_blank"
             href="{{ url('https://datatables.net') }}">official DataTables documentation</a>.</p>
 
