@@ -54,4 +54,47 @@ class ItemController extends Controller
         // Redirect atau kembali ke halaman yang diinginkan setelah menyimpan data
         return redirect()->route('data.item')->withSuccess('Data berhasil ditambahkan!');
     }
+
+    public function detail($id)
+    {
+        $item = Item::find($id);
+        dd($item);
+        
+        // Pastikan item ditemukan sebelum menampilkan detailnya
+        if ($item) {
+            return view('pages.dashboard.item.detail', compact('item'));
+        } else {
+            return redirect()->route('data.item')->with('error', 'Item not found');
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = Item::find($id);
+
+        // Pastikan item ditemukan sebelum mengupdate
+        if ($item) {
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'desc' => 'required|unique:items,desc,' . $id,
+                'unit_price' => 'required|numeric',
+                'qty_items' => 'required|numeric',
+                'status' => 'required|in:ada,habis'
+            ], [
+                // Pesan error
+            ]);
+
+            $item->name = $request->name;
+            $item->desc = $request->desc;
+            $item->unit_price = $request->unit_price;
+            $item->qty_items = $request->qty_items;
+            $item->status = $request->status;
+            $item->user_id = 1; // Misalnya user dengan ID 1 sedang mengelola item ini
+            $item->save();
+
+            return redirect()->route('item.detail', ['id' => $id])->withSuccess('Data berhasil diupdate!');
+        } else {
+            return redirect()->route('data.item')->with('error', 'Item not found');
+        }
+    }
 }

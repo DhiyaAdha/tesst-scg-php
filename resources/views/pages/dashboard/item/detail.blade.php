@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.index')
 
-@section('title', ' My Data Item')
+@section('title', ' My Detail Item')
 
 @section('content')
     <div class="col-6">

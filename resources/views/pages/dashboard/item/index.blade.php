@@ -25,6 +25,7 @@
                             <th>User Input</th>
                             <th>Status</th>
                             <th>Tanggal</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -36,6 +37,7 @@
                             <th>User Input</th>
                             <th>Status</th>
                             <th>Tanggal</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -54,6 +56,16 @@
                                     @endif
                                 </td>
                                 <td>{{ $item->created_at }}</td>
+                                <td>
+                                    <a href="{{ route('item.detail', ['id' => $item->id]) }}" class="btn btn-warning">Edit</a>
+                                    <form action="#" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"
+                                            onclick="return confirm('Are you sure to delete this data?')">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

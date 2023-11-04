@@ -57,7 +57,7 @@
 
             <div class="mb-3">
                 <label for="inputRole" class="form-label">Role</label>
-                <select class="form-select @error('role_id') is-invalid @enderror" id="inputRole" name="role_id"
+                <select class="form-control @error('role_id') is-invalid @enderror" id="inputRole" name="role_id"
                     aria-label="Default select example" >
                     <option selected disabled>Pilih Jenis Role</option>
                     <option value="1" {{ old('role_id') == '1' ? 'selected' : '' }}>Admin</option>
